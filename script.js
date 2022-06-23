@@ -8,16 +8,32 @@ const ctx = canvas.getContext('2d');
 ctx.fillStyle = 'rgb(0, 0, 0)';
 ctx.fillRect(0, 0, width, height);
 
-function degToRad(degrees) {
-    return degrees * Math.PI / 180;
+
+class Player{
+    constructor(x, y, direction){
+        this.x = x;
+        this.y = y;
+        this.dir = direction;
+    }
 }
 
-ctx.fillStyle = 'rgb(255, 0, 0)';
-ctx.beginPath();
-ctx.moveTo(50, 50);
+var promise = new Promise(function(resolve, reject){
+    
+})
 
-ctx.lineTo(150, 50);
-const triHeight = 50 * Math.tan(degToRad(60));
-ctx.lineTo(100, 50 + triHeight);
-ctx.lineTo(50, 50);
-ctx.fill();
+let player = new Player(width/4, height/2, 0);
+
+function draw(){
+    ctx.strokeStyle = 'rgb(255, 255, 255)';
+    ctx.beginPath();
+
+    ctx.moveTo(width/2, 0);
+    ctx.lineTo(width/2, height);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(player.x, player.y, 30, 0, 2*Math.PI);
+    ctx.stroke();
+}
+
+draw();
